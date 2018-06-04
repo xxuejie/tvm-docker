@@ -1,7 +1,7 @@
 FROM ubuntu:xenial
 MAINTAINER Xuejie Xiao <xxuejie@gmail.com>
 
-RUN apt-get update && apt-get install -y git python python-dev python-setuptools gcc libtinfo-dev zlib1g-dev wget
+RUN apt-get update && apt-get install -y git python python-dev python-setuptools gcc libtinfo-dev zlib1g-dev wget build-essential
 
 RUN echo "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main" >> /etc/apt/sources.list.d/llvm.list
 RUN echo "deb-src http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main" >> /etc/apt/sources.list.d/llvm.list
