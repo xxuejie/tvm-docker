@@ -1,12 +1,13 @@
 FROM ubuntu:xenial
 MAINTAINER Xuejie Xiao <xxuejie@gmail.com>
 
+RUN apt-get update && apt-get install -y git python python-dev python-setuptools gcc libtinfo-dev zlib1g-dev wget
+
 RUN echo "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main" >> /etc/apt/sources.list.d/llvm.list
 RUN echo "deb-src http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main" >> /etc/apt/sources.list.d/llvm.list
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 
-RUN apt-get update && apt-get install -y git python python-dev python-setuptools gcc libtinfo-dev zlib1g-dev
-RUN apt-get install -y clang-6.0 clang-tools-6.0 clang-6.0-doc libclang-common-6.0-dev libclang-6.0-dev libclang1-6.0 libllvm6.0 llvm-6.0 llvm-6.0-dev
+RUN apt-get update && apt-get install -y clang-6.0 clang-tools-6.0 clang-6.0-doc libclang-common-6.0-dev libclang-6.0-dev libclang1-6.0 libllvm6.0 llvm-6.0 llvm-6.0-dev
 
 RUN git clone --recursive https://github.com/dmlc/tvm /tvm
 RUN cp /tvm/make/config.mk /tvm/config.mk
